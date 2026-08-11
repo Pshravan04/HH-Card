@@ -4,6 +4,7 @@ import Image from "next/image";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://hh-card.vercel.app'),
   title: "HH Goa 2026 - Builder ID Generator",
   description: "Forge your digital credentials for HH Goa 2026.",
 };
