@@ -1,0 +1,213 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}@font-face{font-family:'Playfair Display';src:url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');}@font-face{font-family:'JetBrains Mono';src:url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap');}</style><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-secondary-fixed":"#221b00","on-primary":"#670020","primary-container":"#ff4f73","surface-container-highest":"#1e3a30","secondary-fixed-dim":"#e9c400","surface-bright":"#233e34","tertiary-fixed":"#e6e5b9","on-primary-fixed":"#400011","error-container":"#93000a","on-tertiary-fixed":"#1d1d03","hot-pink":"#FF3366","on-primary-container":"#5a001b","on-tertiary-fixed-variant":"#484828","inverse-surface":"#caeadb","on-primary-fixed-variant":"#910030","surface-container-lowest":"#00120b","outline-variant":"#5c3f42","secondary":"#fff9ef","cream-surface":"#FFFDD0","outline":"#ac888b","on-background":"#caeadb","primary":"#ffb2ba","on-secondary":"#3a3000","on-error-container":"#ffdad6","error":"#ffb4ab","inverse-on-surface":"#1a362c","secondary-fixed":"#ffe16d","on-surface":"#caeadb","tertiary-container":"#aead85","surface-container":"#07241b","surface":"#001710","primary-fixed-dim":"#ffb2ba","secondary-container":"#ffdb3c","surface-tint":"#ffb2ba","on-tertiary":"#323214","on-secondary-fixed-variant":"#544600","on-error":"#690005","on-secondary-container":"#725f00","on-tertiary-container":"#414122","tertiary":"#cac99f","background":"#001710","surface-container-high":"#132f25","golden-yellow":"#FFD700","inverse-primary":"#bd0042","surface-container-low":"#032017","deep-forest":"#052219","surface-dim":"#001710","tertiary-fixed-dim":"#cac99f","surface-variant":"#1e3a30","primary-fixed":"#ffd9dc","on-surface-variant":"#e5bdc0"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"unit":"4px","gutter":"24px","container-max":"1200px","margin-mobile":"16px","margin-desktop":"64px"},"fontFamily":{"label-caps":["JetBrains Mono"],"headline-lg":["Playfair Display"],"body-md":["JetBrains Mono"],"display-lg":["Playfair Display"],"button":["JetBrains Mono"],"step-number":["JetBrains Mono"],"headline-lg-mobile":["Playfair Display"]},"fontSize":{"label-caps":["12px",{"lineHeight":"16px","letterSpacing":"0.1em","fontWeight":"700"}],"headline-lg":["40px",{"lineHeight":"48px","fontWeight":"700"}],"body-md":["16px",{"lineHeight":"24px","fontWeight":"400"}],"display-lg":["64px",{"lineHeight":"72px","letterSpacing":"-0.02em","fontWeight":"700"}],"button":["14px",{"lineHeight":"20px","fontWeight":"700"}],"step-number":["18px",{"lineHeight":"18px","fontWeight":"800"}],"headline-lg-mobile":["32px",{"lineHeight":"36px","fontWeight":"700"}]}}}}</script></head><body class="bg-deep-forest font-body-md text-on-surface"><header class="fixed top-0 w-full z-50 bg-deep-forest/90 backdrop-blur-md border-b-2 border-hot-pink/20"><div class="h-20 max-w-container-max mx-auto px-margin-mobile lg:px-margin-desktop flex items-center justify-between"><div class="flex items-center gap-2"><span class="font-headline-lg text-headline-lg-mobile lg:text-headline-lg tracking-tighter text-on-surface">HH GOA 2026</span></div><nav class="hidden md:flex items-center gap-gutter" data-active-classes="text-hot-pink border-b-2 border-hot-pink"><a class="font-label-caps text-label-caps text-on-surface-variant hover:text-hot-pink transition-all uppercase" data-path="landing" href="#">Home</a><a class="font-label-caps text-label-caps text-on-surface-variant hover:text-hot-pink transition-all uppercase" data-path="the-radar" href="#">The Radar</a><a class="bg-hot-pink text-deep-forest px-6 py-2 font-button text-button uppercase hover:bg-golden-yellow transition-colors" data-path="photo-upload" href="#">Build</a></nav><div class="flex items-center gap-4"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-deep-forest min-h-screen"><div class="flex flex-col w-full px-margin-mobile lg:px-margin-desktop py-16">
+<div class="max-w-container-max mx-auto w-full flex flex-col lg:flex-row gap-gutter">
+<div class="w-full lg:w-1/2 flex flex-col gap-12">
+<div class="flex flex-col gap-4">
+<div class="bg-golden-yellow text-surface-container-lowest font-step-number text-step-number px-4 py-2 w-max border-2 border-surface-container-lowest">
+          02. PERSONALIZE
+        </div>
+<h1 class="font-display-lg text-headline-lg-mobile lg:text-display-lg text-on-surface">DEFINE YOUR<br><span class="text-hot-pink italic">BUILDER CLASS</span></h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mt-4">
+          Input your parameters. The terminal will classify your build style and generate your access credentials.
+        </p>
+</div>
+<form class="flex flex-col gap-8" id="personalizeForm">
+<div class="flex flex-col gap-2 relative group">
+<label class="font-label-caps text-label-caps text-hot-pink uppercase tracking-widest absolute -top-3 left-0 bg-deep-forest px-1 z-10 transition-all group-focus-within:text-golden-yellow" for="builderName">NAME / ALIAS</label>
+<input autocomplete="off" class="bg-transparent border-b-2 border-hot-pink text-on-surface font-body-md text-body-md py-4 px-2 focus:outline-none focus:border-golden-yellow transition-colors placeholder:text-on-surface-variant/50 uppercase" id="builderName" name="builderName" placeholder="Enter handle..." spellcheck="false" type="text" value="ANO_NYMOUS">
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-label-caps text-label-caps text-hot-pink uppercase tracking-widest">TECH STACK / ARSENAL</span>
+<div class="flex flex-wrap gap-2" id="techStackContainer">
+<button class="tech-tag border-2 border-surface-container-highest px-4 py-2 font-button text-button text-on-surface hover:border-hot-pink hover:text-hot-pink transition-colors active-tag" data-tag="RUST" type="button">RUST</button>
+<button class="tech-tag border-2 border-surface-container-highest px-4 py-2 font-button text-button text-on-surface hover:border-hot-pink hover:text-hot-pink transition-colors active-tag" data-tag="TS" type="button">TYPESCRIPT</button>
+<button class="tech-tag border-2 border-surface-container-highest px-4 py-2 font-button text-button text-on-surface hover:border-hot-pink hover:text-hot-pink transition-colors" data-tag="SOL" type="button">SOLIDITY</button>
+<button class="tech-tag border-2 border-surface-container-highest px-4 py-2 font-button text-button text-on-surface hover:border-hot-pink hover:text-hot-pink transition-colors" data-tag="NEXT" type="button">NEXT.JS</button>
+<button class="tech-tag border-2 border-surface-container-highest px-4 py-2 font-button text-button text-on-surface hover:border-hot-pink hover:text-hot-pink transition-colors" data-tag="PYTHON" type="button">PYTHON</button>
+<button class="tech-tag border-2 border-surface-container-highest px-4 py-2 font-button text-button text-on-surface hover:border-hot-pink hover:text-hot-pink transition-colors" data-tag="GO" type="button">GOLANG</button>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-label-caps text-label-caps text-hot-pink uppercase tracking-widest">ROLE / PROTOCOL</span>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-2" id="roleContainer">
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="role" type="radio" value="DEVELOPER">
+<div class="border-2 border-surface-container-highest p-4 flex flex-col items-center justify-center gap-2 peer-checked:border-golden-yellow peer-checked:text-golden-yellow text-on-surface-variant hover:bg-surface-container transition-all text-center">
+<span class="material-symbols-outlined text-[32px]">terminal</span>
+<span class="font-button text-button">DEVELOPER</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="role" type="radio" value="DESIGNER">
+<div class="border-2 border-surface-container-highest p-4 flex flex-col items-center justify-center gap-2 peer-checked:border-golden-yellow peer-checked:text-golden-yellow text-on-surface-variant hover:bg-surface-container transition-all text-center">
+<span class="material-symbols-outlined text-[32px]">brush</span>
+<span class="font-button text-button">DESIGNER</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="role" type="radio" value="RESEARCHER">
+<div class="border-2 border-surface-container-highest p-4 flex flex-col items-center justify-center gap-2 peer-checked:border-golden-yellow peer-checked:text-golden-yellow text-on-surface-variant hover:bg-surface-container transition-all text-center">
+<span class="material-symbols-outlined text-[32px]">science</span>
+<span class="font-button text-button">RESEARCHER</span>
+</div>
+</label>
+</div>
+</div>
+<button class="mt-8 bg-hot-pink text-deep-forest px-8 py-4 font-button text-button uppercase hover:bg-golden-yellow transition-colors self-start border-2 border-transparent" type="button">
+          FINALIZE CREDENTIALS
+        </button>
+</form>
+</div>
+<div class="w-full lg:w-1/2 flex items-center justify-center p-8 lg:p-12 relative lg:border-l-2 border-dashed border-hot-pink/30 lg:pl-16 mt-16 lg:mt-0">
+<div class="absolute -top-4 right-4 bg-deep-forest px-2 z-10 hidden lg:block">
+<span class="font-label-caps text-label-caps text-on-surface-variant tracking-[0.2em]">LIVE_PREVIEW</span>
+</div>
+<div class="relative w-full max-w-[400px] aspect-[1/1.4] bg-cream-surface border-2 border-surface-container-lowest p-6 flex flex-col justify-between shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-500 ease-out group">
+<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9IiMwNTIyMTkiIGZpbGwtb3BhY2l0eT0iMC4xIi8+PC9zdmc+')] opacity-50 z-0 mix-blend-multiply"></div>
+<div class="relative z-10 flex justify-between items-start border-b-2 border-deep-forest pb-4">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-deep-forest/60">HH GOA // 2026</span>
+<span class="font-headline-lg text-headline-lg-mobile text-deep-forest leading-none mt-1">BUILDER</span>
+</div>
+<div class="w-12 h-12 rounded-full border-2 border-deep-forest flex items-center justify-center bg-golden-yellow">
+<span class="material-symbols-outlined text-deep-forest">markdown_copy</span>
+</div>
+</div>
+<div class="relative z-10 flex-grow py-6 flex flex-col justify-center gap-6">
+<div class="flex items-center gap-2 border-l-4 border-hot-pink pl-4">
+<span class="material-symbols-outlined text-hot-pink animate-pulse">arrow_back_ios_new</span>
+<span class="font-display-lg text-headline-lg-mobile lg:text-[40px] leading-none text-deep-forest uppercase truncate tracking-tight" id="previewName">ANO_NYMOUS</span>
+</div>
+<div class="border-t-2 border-dashed border-deep-forest/30 pt-4 flex flex-col gap-2">
+<span class="font-label-caps text-label-caps text-deep-forest/60">CLASS CLASSIFICATION</span>
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 bg-deep-forest text-golden-yellow font-button text-[12px] uppercase" id="previewRole">DEVELOPER</span>
+<span class="px-2 py-1 bg-transparent border border-deep-forest text-deep-forest font-button text-[12px] uppercase" id="previewRarity">RARE</span>
+</div>
+<span class="font-headline-lg text-[24px] leading-none text-deep-forest italic mt-1" id="previewClass">"THE TERMINAL SHIPPER"</span>
+</div>
+</div>
+<div class="relative z-10 flex flex-col gap-2 border-t-2 border-deep-forest pt-4">
+<span class="font-label-caps text-label-caps text-deep-forest/60">TECH SIGNATURE</span>
+<div class="flex flex-wrap gap-1" id="previewTech">
+<span class="text-deep-forest font-body-md text-[14px] bg-deep-forest/5 px-1">RUST</span>
+<span class="text-deep-forest font-body-md text-[14px] bg-deep-forest/5 px-1">TS</span>
+</div>
+</div>
+<div class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<svg class="w-12 h-12 text-hot-pink animate-[spin_10s_linear_infinite]" viewBox="0 0 100 100">
+<path d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="transparent" id="curve"></path>
+<text class="font-label-caps text-[14px] uppercase fill-current tracking-widest">
+<textPath href="#curve">
+                   VERIFIED BUILDER • GOA 2026 •
+                 </textPath>
+</text>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</div>
+<style>
+    .active-tag {
+        border-color: var(--color-hot-pink, #FF3366) !important;
+        color: var(--color-hot-pink, #FF3366) !important;
+    }
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const nameInput = document.getElementById('builderName');
+    const previewName = document.getElementById('previewName');
+    const techTags = document.querySelectorAll('.tech-tag');
+    const previewTech = document.getElementById('previewTech');
+    const roleRadios = document.querySelectorAll('input[name="role"]');
+    const previewRole = document.getElementById('previewRole');
+    const previewClass = document.getElementById('previewClass');
+    const previewRarity = document.getElementById('previewRarity');
+
+    // Name Sync
+    nameInput.addEventListener('input', (e) => {
+      previewName.textContent = e.target.value.toUpperCase() || 'ANO_NYMOUS';
+    });
+
+    // Tech Tags Logic
+    let activeTech = ['RUST', 'TS'];
+    
+    function updatePreviewTech() {
+        previewTech.innerHTML = activeTech.map(tech => 
+            `<span class="text-deep-forest font-body-md text-[14px] bg-deep-forest/5 px-1">${tech}</span>`
+        ).join('');
+        generateClass();
+    }
+
+    techTags.forEach(tag => {
+        tag.addEventListener('click', () => {
+            const val = tag.getAttribute('data-tag');
+            if (activeTech.includes(val)) {
+                activeTech = activeTech.filter(t => t !== val);
+                tag.classList.remove('active-tag', 'border-hot-pink', 'text-hot-pink');
+                tag.classList.add('border-surface-container-highest', 'text-on-surface');
+            } else {
+                if(activeTech.length >= 4) {
+                    // limit to 4
+                    return;
+                }
+                activeTech.push(val);
+                tag.classList.add('active-tag', 'border-hot-pink', 'text-hot-pink');
+                tag.classList.remove('border-surface-container-highest', 'text-on-surface');
+            }
+            updatePreviewTech();
+        });
+    });
+
+    // Role Logic
+    roleRadios.forEach(radio => {
+        radio.addEventListener('change', (e) => {
+            previewRole.textContent = e.target.value;
+            generateClass();
+        });
+    });
+
+    // Class Generator Logic
+    function generateClass() {
+        const currentRole = document.querySelector('input[name="role"]:checked').value;
+        const techCount = activeTech.length;
+        
+        let rarity = "COMMON";
+        let className = "THE APPRENTICE";
+
+        if(currentRole === 'DEVELOPER') {
+             if(activeTech.includes('RUST') && activeTech.includes('SOL')) {
+                 className = '"THE SMART CONTRACT ASSASSIN"';
+                 rarity = "LEGENDARY";
+             } else if (techCount > 2) {
+                 className = '"THE TERMINAL SHIPPER"';
+                 rarity = "RARE";
+             } else {
+                 className = '"THE CODE MONK"';
+             }
+        } else if (currentRole === 'DESIGNER') {
+             if(activeTech.includes('NEXT')) {
+                 className = '"THE PIXEL ENGINEER"';
+                 rarity = "RARE";
+             } else {
+                 className = '"THE VISUAL ALCHEMIST"';
+             }
+        } else {
+             className = '"THE DEEP DIVER"';
+             if(techCount > 1) rarity = "RARE";
+        }
+
+        previewClass.textContent = className;
+        previewRarity.textContent = rarity;
+        
+        if(rarity === 'LEGENDARY') {
+            previewRarity.className = "px-2 py-1 bg-hot-pink text-deep-forest font-button text-[12px] uppercase";
+        } else if (rarity === 'RARE') {
+            previewRarity.className = "px-2 py-1 bg-transparent border border-deep-forest text-deep-forest font-button text-[12px] uppercase";
+        } else {
+            previewRarity.className = "px-2 py-1 bg-transparent text-deep-forest/60 font-button text-[12px] uppercase";
+        }
+    }
+  });
+</script></main><footer class="w-full bg-surface-container-lowest border-t-2 border-dashed border-hot-pink/30 py-16 mt-margin-desktop"><div class="max-w-container-max mx-auto px-margin-mobile lg:px-margin-desktop"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter"><div class="col-span-1 lg:col-span-2"><span class="font-headline-lg text-headline-lg-mobile text-on-surface block mb-4">HH GOA 2026</span><p class="font-body-md text-on-surface-variant max-w-md">The ultimate builder workstation for the Goa 2026 hackers. Precision, grit, and tropical high-performance.</p></div><div class="flex flex-col gap-unit"><span class="font-label-caps text-label-caps text-hot-pink mb-2">Links</span><a class="font-body-md text-on-surface-variant hover:text-golden-yellow" href="#">Official Site</a><a class="font-body-md text-on-surface-variant hover:text-golden-yellow" href="#">Devfolio App</a><a class="font-body-md text-on-surface-variant hover:text-golden-yellow" href="#">The Radar</a></div><div class="flex flex-col gap-unit"><span class="font-label-caps text-label-caps text-hot-pink mb-2">Social</span><a class="font-body-md text-on-surface-variant hover:text-golden-yellow" href="#">Twitter / X</a><a class="font-body-md text-on-surface-variant hover:text-golden-yellow" href="#">Github</a></div></div><div class="mt-16 pt-8 border-t border-surface-container-highest flex justify-between items-center"><span class="font-label-caps text-label-caps text-on-tertiary-fixed-variant">© 2026 HH GOA. ALL SYSTEMS GO.</span><div class="flex gap-4"><span class="material-symbols-outlined text-hot-pink">arrow_back_ios_new</span><span class="material-symbols-outlined text-golden-yellow">markdown_copy</span></div></div></div></footer></body></html>
