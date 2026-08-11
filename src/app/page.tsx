@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { RetroButton } from "@/components/RetroButton";
 
 export default function Home() {
   return (
@@ -12,7 +13,7 @@ export default function Home() {
             src="/assets/Sun_rise.png" 
             alt="Sunrise" 
             fill 
-            className="object-cover object-top opacity-30 mix-blend-screen"
+            className="object-cover object-top opacity-50 mix-blend-overlay"
             priority
           />
         </div>
@@ -68,14 +69,9 @@ export default function Home() {
             </p>
             
             <div className="pt-10 w-full flex flex-col md:flex-row items-center justify-center gap-6">
-              <Link href="/upload" className="relative group w-full md:w-auto">
-                <div className="bg-hot-pink text-deep-forest px-10 py-5 flex items-center justify-center border-2 border-transparent group-hover:bg-golden-yellow transition-all duration-300">
-                  <span className="font-button text-xl md:text-2xl uppercase tracking-widest font-bold">
-                    Start Generating
-                  </span>
-                  <span className="absolute -top-2 -right-2 w-4 h-4 bg-golden-yellow border-2 border-deep-forest group-hover:scale-125 transition-transform"></span>
-                </div>
-              </Link>
+              <RetroButton href="/upload" className="w-full md:w-auto h-[70px]">
+                Start Generating
+              </RetroButton>
             </div>
             
             <div className="mt-4 md:mt-8 font-label-caps text-golden-yellow/80 uppercase tracking-widest text-xs md:text-sm">
@@ -85,48 +81,114 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Details Section */}
-      <div className="w-full bg-surface-container-lowest border-t-2 border-dashed border-hot-pink/30 py-24 relative z-10">
-        <div className="max-w-container-max mx-auto px-margin-mobile lg:px-margin-desktop w-full flex flex-col items-center">
-          
-          {/* Objective Box */}
-          <div className="w-full max-w-4xl bg-surface-container-highest border-l-4 border-golden-yellow p-8 md:p-12 mb-24 shadow-xl">
-            <div className="flex flex-col md:flex-row items-center gap-8">
-              <span className="material-symbols-outlined text-hot-pink text-[80px]">emoji_events</span>
-              <div className="flex flex-col gap-4">
-                <h3 className="font-headline-lg text-4xl text-golden-yellow uppercase tracking-wide">Claim Your Spot</h3>
-                <p className="font-body-md text-white/80 text-lg leading-relaxed">
-                  Use <span className="text-hot-pink font-bold">#FrameInGoa</span> to get featured on the W Celeb Radar. Reaching the top of the ladder wins you an exclusive physical HH Goa ID at the event.
-                </p>
-              </div>
-            </div>
-          </div>
+      {/* How It Works Section (Hanging Signs) */}
+      <div className="w-full relative bg-deep-forest pt-16 pb-32 overflow-hidden border-t-2 border-dashed border-golden-yellow/30">
+         
+         {/* Palm Tree Left */}
+         <div className="absolute top-0 -left-10 md:-left-32 w-[300px] md:w-[600px] h-full z-0 pointer-events-none flex items-end">
+             <Image 
+                 src="/assets/palm_tree.png" 
+                 alt="Palm Tree" 
+                 width={1024} 
+                 height={1024} 
+                 className="w-full h-auto object-contain"
+             />
+         </div>
 
-          <h2 className="font-headline-lg text-5xl md:text-6xl text-white uppercase tracking-wider mb-16 text-center">
+         {/* Palm Tree Right */}
+         <div className="absolute top-0 -right-10 md:-right-32 w-[300px] md:w-[600px] h-full z-0 pointer-events-none flex items-end scale-x-[-1]">
+             <Image 
+                 src="/assets/palm_tree.png" 
+                 alt="Palm Tree" 
+                 width={1024} 
+                 height={1024} 
+                 className="w-full h-auto object-contain"
+             />
+         </div>
+
+         <h2 className="font-headline-lg text-5xl md:text-6xl text-white uppercase tracking-wider mb-20 text-center relative z-30">
             How It Works
-          </h2>
+         </h2>
 
-          <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="col-span-1 border-2 border-solid border-hot-pink p-8 flex flex-col items-center justify-center gap-6 bg-deep-forest relative overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
-              <span className="font-step-number text-deep-forest font-bold bg-golden-yellow px-3 py-1 absolute top-4 left-4 text-xl">01</span>
-              <span className="material-symbols-outlined text-[80px] text-hot-pink mt-6">fingerprint</span>
-              <h3 className="font-body-md text-xl font-bold text-white uppercase text-center tracking-widest">Authenticate<br/>Identity</h3>
+         {/* Bamboo Bar */}
+         <div className="w-full relative h-10 md:h-12 bg-golden-yellow border-y-4 border-black z-20 flex flex-row items-center justify-between shadow-2xl">
+            {[...Array(20)].map((_, i) => (
+               <div key={i} className="h-full border-r-4 border-black/20 w-4 md:w-12"></div>
+            ))}
+         </div>
+         
+         <div className="max-w-[1400px] mx-auto px-margin-mobile lg:px-margin-desktop w-full relative z-10">
+            {/* House Graphic Background */}
+            <div className="absolute inset-0 z-0 flex items-center justify-center opacity-30 pointer-events-none">
+                <Image 
+                    src="/assets/Hacker_house.png" 
+                    alt="HH Goa Hacker House" 
+                    width={800} 
+                    height={800} 
+                    className="object-contain w-full max-w-[800px] drop-shadow-2xl translate-y-12"
+                />
             </div>
             
-            <div className="col-span-1 border-2 border-solid border-golden-yellow p-8 flex flex-col items-center justify-center gap-6 bg-deep-forest relative overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
-              <span className="font-step-number text-deep-forest font-bold bg-hot-pink px-3 py-1 absolute top-4 left-4 text-xl">02</span>
-              <span className="material-symbols-outlined text-[80px] text-golden-yellow mt-6">terminal</span>
-              <h3 className="font-body-md text-xl font-bold text-white uppercase text-center tracking-widest">Configure<br/>Specs</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 relative z-10 items-start justify-center">
+               
+               {/* Sign 1: Authenticate Identity */}
+               <div className="flex flex-col items-center justify-start pt-24 md:pt-32">
+                 <div className="relative w-full max-w-[380px] group">
+                    <div className="absolute -top-24 md:-top-32 left-12 w-2 h-24 md:h-32 border-l-4 border-dashed border-golden-yellow"></div>
+                    <div className="absolute -top-24 md:-top-32 right-12 w-2 h-24 md:h-32 border-l-4 border-dashed border-golden-yellow"></div>
+                    <div className="bg-golden-yellow border-[6px] border-black p-2 md:p-3 shadow-[12px_12px_0_#000000] hover:-rotate-2 transition-transform duration-500 origin-top z-10 relative">
+                      <div className="border-[6px] border-white h-full p-8 md:p-10 flex flex-col items-center justify-center text-center gap-6 bg-golden-yellow">
+                        <span className="material-symbols-outlined text-[60px] text-black">fingerprint</span>
+                        <h3 className="font-body-md text-2xl md:text-3xl font-bold text-black uppercase tracking-widest leading-tight">01<br/>Authenticate<br/>Identity</h3>
+                      </div>
+                    </div>
+                 </div>
+               </div>
+
+               {/* Sign 2: Configure Specs */}
+               <div className="flex flex-col items-center justify-start pt-32 md:pt-48">
+                 <div className="relative w-full max-w-[380px] group">
+                    <div className="absolute -top-32 md:-top-48 left-12 w-2 h-32 md:h-48 border-l-4 border-dashed border-hot-pink"></div>
+                    <div className="absolute -top-32 md:-top-48 right-12 w-2 h-32 md:h-48 border-l-4 border-dashed border-hot-pink"></div>
+                    <div className="bg-hot-pink border-[6px] border-black p-2 md:p-3 shadow-[12px_12px_0_#000000] hover:rotate-2 transition-transform duration-500 origin-top z-10 relative">
+                      <div className="border-[6px] border-white h-full p-8 md:p-10 flex flex-col items-center justify-center text-center gap-6 bg-hot-pink">
+                        <span className="material-symbols-outlined text-[60px] text-white">terminal</span>
+                        <h3 className="font-body-md text-2xl md:text-3xl font-bold text-white uppercase tracking-widest leading-tight">02<br/>Configure<br/>Specs</h3>
+                      </div>
+                    </div>
+                 </div>
+               </div>
+
+               {/* Sign 3: Mint Credential */}
+               <div className="flex flex-col items-center justify-start pt-20 md:pt-28">
+                 <div className="relative w-full max-w-[380px] group">
+                    <div className="absolute -top-20 md:-top-28 left-12 w-2 h-20 md:h-28 border-l-4 border-dashed border-golden-yellow"></div>
+                    <div className="absolute -top-20 md:-top-28 right-12 w-2 h-20 md:h-28 border-l-4 border-dashed border-golden-yellow"></div>
+                    <div className="bg-golden-yellow border-[6px] border-black p-2 md:p-3 shadow-[12px_12px_0_#000000] hover:-rotate-1 transition-transform duration-500 origin-top z-10 relative">
+                      <div className="border-[6px] border-white h-full p-8 md:p-10 flex flex-col items-center justify-center text-center gap-6 bg-golden-yellow">
+                        <span className="material-symbols-outlined text-[60px] text-black">print</span>
+                        <h3 className="font-body-md text-2xl md:text-3xl font-bold text-black uppercase tracking-widest leading-tight">03<br/>Mint<br/>Credential</h3>
+                      </div>
+                    </div>
+                 </div>
+               </div>
+
             </div>
-            
-            <div className="col-span-1 border-2 border-solid border-hot-pink p-8 flex flex-col items-center justify-center gap-6 bg-deep-forest relative overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
-              <span className="font-step-number text-deep-forest font-bold bg-golden-yellow px-3 py-1 absolute top-4 left-4 text-xl">03</span>
-              <span className="material-symbols-outlined text-[80px] text-hot-pink mt-6">print</span>
-              <h3 className="font-body-md text-xl font-bold text-white uppercase text-center tracking-widest">Mint<br/>Credential</h3>
+         </div>
+      </div>
+
+      {/* Objective Section */}
+      <section className="w-full bg-surface-container-lowest py-16 relative z-10">
+        <div className="max-w-container-max mx-auto px-margin-mobile lg:px-margin-desktop">
+          <div className="bg-surface-container-highest border-l-8 border-golden-yellow p-8 flex items-center gap-6">
+            <span className="material-symbols-outlined text-hot-pink text-5xl">emoji_events</span>
+            <div>
+              <h3 className="font-headline-lg text-[32px] text-white uppercase tracking-tighter mb-2">Claim Your Spot</h3>
+              <p className="font-body-md text-on-surface text-lg font-bold">Use the hashtag <span className="text-hot-pink">#FrameInGoa</span> to secure your chance at exclusive physical drops. Build fast, break things.</p>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </main>
   );
 }

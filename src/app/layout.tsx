@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { RetroButton } from "@/components/RetroButton";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -24,7 +25,7 @@ function Header() {
         </div>
         <nav className="hidden md:flex items-center gap-gutter">
           <Link href="/" className="font-label-caps transition-all uppercase text-hot-pink border-b-2 border-hot-pink">Home</Link>
-          <Link href="/upload" className="bg-hot-pink text-deep-forest border border-hot-pink/50 rounded-full px-6 py-2 font-button uppercase hover:bg-hot-pink/90 hover:-translate-y-[1px] transition-all">Build</Link>
+          <RetroButton as="a" href="/upload">Build</RetroButton>
         </nav>
         <div className="flex items-center gap-4">
           <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
@@ -38,33 +39,38 @@ function Header() {
 
 function Footer() {
   return (
-    <footer className="w-full bg-surface-container-lowest border-t-2 border-dashed border-hot-pink/30 py-16 mt-margin-desktop">
-      <div className="max-w-container-max mx-auto px-margin-mobile lg:px-margin-desktop">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
-          <div className="col-span-1 lg:col-span-2">
-            <span className="font-headline-lg text-[32px] text-on-surface block mb-4">HH GOA 2026</span>
-            <p className="font-body-md text-on-surface-variant max-w-md">The ultimate builder workstation for the Goa 2026 hackers. Precision, grit, and tropical high-performance.</p>
+    <>
+      <div className="w-full h-8 bg-deep-forest relative z-10"></div>
+      <footer className="w-full bg-surface-container-lowest py-16 relative z-10">
+        <div className="max-w-container-max mx-auto px-margin-mobile lg:px-margin-desktop">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+            <div className="col-span-1">
+              <span className="font-headline-lg text-[32px] text-on-surface block mb-4 tracking-tighter">HH GOA 2026</span>
+              <p className="font-body-md text-on-surface-variant text-sm mt-4">The ultimate builder workstation for the Goa 2026 hackers. Precision, grit, and tropical high-performance.</p>
+            </div>
+            <div className="flex flex-col gap-unit">
+              <span className="font-label-caps text-hot-pink mb-4 tracking-widest uppercase text-xs">Links</span>
+              <a className="font-body-md text-on-surface-variant hover:text-golden-yellow transition-colors" href="#">Official Site</a>
+              <a className="font-body-md text-on-surface-variant hover:text-golden-yellow transition-colors" href="#">Devfolio App</a>
+              <a className="font-body-md text-on-surface-variant hover:text-golden-yellow transition-colors" href="#">The Radar</a>
+            </div>
+            <div className="flex flex-col gap-unit">
+              <span className="font-label-caps text-hot-pink mb-4 tracking-widest uppercase text-xs">Social</span>
+              <a className="font-body-md text-on-surface-variant hover:text-golden-yellow transition-colors" href="#">Twitter / X</a>
+              <a className="font-body-md text-on-surface-variant hover:text-golden-yellow transition-colors" href="#">Github</a>
+            </div>
+            <div className="flex flex-col gap-unit"></div>
           </div>
-          <div className="flex flex-col gap-unit">
-            <span className="font-label-caps text-hot-pink mb-2">Links</span>
-            <a className="font-body-md text-on-surface-variant hover:text-golden-yellow" href="https://hhgoa.com">Official Site</a>
-            <a className="font-body-md text-on-surface-variant hover:text-golden-yellow" href="https://hacker-house-goa-2026.devfolio.co/">Devfolio App</a>
-          </div>
-          <div className="flex flex-col gap-unit">
-            <span className="font-label-caps text-hot-pink mb-2">Social</span>
-            <a className="font-body-md text-on-surface-variant hover:text-golden-yellow" href="https://x.com/247pmstudio">Twitter / X</a>
-            <a className="font-body-md text-on-surface-variant hover:text-golden-yellow" href="#">Github</a>
+          <div className="mt-16 pt-8 flex justify-between items-center">
+            <span className="font-label-caps text-on-tertiary-fixed-variant tracking-widest uppercase text-xs">© 2026 HH GOA. ALL SYSTEMS GO.</span>
+            <div className="flex gap-4">
+              <span className="material-symbols-outlined text-hot-pink">arrow_back_ios_new</span>
+              <span className="material-symbols-outlined text-golden-yellow">markdown_copy</span>
+            </div>
           </div>
         </div>
-        <div className="mt-16 pt-8 border-t border-surface-container-highest flex justify-between items-center">
-          <span className="font-label-caps text-on-tertiary-fixed-variant">© 2026 HH GOA. ALL SYSTEMS GO.</span>
-          <div className="flex gap-4">
-            <span className="material-symbols-outlined text-hot-pink">arrow_back_ios_new</span>
-            <span className="material-symbols-outlined text-golden-yellow">markdown_copy</span>
-          </div>
-        </div>
-      </div>
-    </footer>
+      </footer>
+    </>
   );
 }
 
