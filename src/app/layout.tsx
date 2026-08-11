@@ -25,7 +25,7 @@ function Header() {
         </div>
         <nav className="hidden md:flex items-center gap-gutter">
           <Link href="/" className="font-label-caps transition-all uppercase text-hot-pink border-b-2 border-hot-pink">Home</Link>
-          <RetroButton as="a" href="/upload">Build</RetroButton>
+          <RetroButton href="/upload">Build</RetroButton>
         </nav>
         <div className="flex items-center gap-4">
           <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
