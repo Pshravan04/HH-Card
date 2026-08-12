@@ -36,7 +36,8 @@ export function RetroButton({ children, className = "", href, ...props }: RetroB
     </div>
   );
 
-  const containerClasses = `relative inline-flex items-center justify-center bg-[#0A6A38] p-[3px] hover:scale-105 transition-transform duration-200 cursor-pointer ${className}`;
+  const disabledClasses = props.disabled ? "opacity-50 cursor-not-allowed hover:scale-100" : "hover:scale-105 cursor-pointer";
+  const containerClasses = `relative inline-flex items-center justify-center bg-[#0A6A38] p-[3px] transition-transform duration-200 ${disabledClasses} ${className}`;
 
   if (href) {
     return (

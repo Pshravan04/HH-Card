@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-
+import { RetroButton } from "@/components/RetroButton";
 export default function UploadPhoto() {
   const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -99,10 +99,10 @@ export default function UploadPhoto() {
                   </div>
                 </div>
                 
-                <div className="relative w-48">
-                  <button className="w-full bg-hot-pink text-deep-forest border border-hot-pink/50 rounded-full font-label-caps font-bold py-3 uppercase tracking-wider hover:bg-hot-pink/90 hover:-translate-y-[1px] transition-all">
+                <div className="relative inline-block w-auto">
+                  <RetroButton>
                     Browse Local Storage
-                  </button>
+                  </RetroButton>
                   <input 
                     type="file" 
                     accept="image/*" 
@@ -185,18 +185,13 @@ export default function UploadPhoto() {
 
             {/* Action Button */}
             <div className="mt-auto pt-4">
-              <button 
+              <RetroButton 
                 onClick={handleConfirm}
                 disabled={!isProcessed || !imageSrc}
-                className={`w-full py-4 border border-hot-pink rounded-full font-label-caps font-bold tracking-widest flex items-center justify-center gap-2 transition-all ${
-                  isProcessed && imageSrc 
-                    ? "bg-transparent text-hot-pink hover:bg-hot-pink hover:text-deep-forest cursor-pointer hover:-translate-y-[1px]" 
-                    : "bg-transparent text-hot-pink/30 border-hot-pink/30 cursor-not-allowed"
-                }`}
+                className="w-full"
               >
-                NEXT SEQUENCE 
-                <span className="material-symbols-outlined text-lg">arrow_forward</span>
-              </button>
+                NEXT SEQUENCE
+              </RetroButton>
             </div>
             
           </div>

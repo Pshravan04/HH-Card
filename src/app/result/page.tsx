@@ -2,9 +2,10 @@
 
 import { useState, useEffect, useRef } from "react";
 import { toPng } from "html-to-image";
+import { RetroButton } from "@/components/RetroButton";
 import Link from "next/link";
 import Image from "next/image";
-import gsap from "gsap";
+import { IDCard } from "@/components/IDCard";
 
 export default function Result() {
   const [name, setName] = useState("ALEX.WAV");
@@ -13,20 +14,12 @@ export default function Result() {
   const [role, setRole] = useState("DEVELOPER");
   const [imageSrc, setImageSrc] = useState<string | null>(null);
 
+  const [isFlipped, setIsFlipped] = useState(false);
+
   const cardRef = useRef<HTMLDivElement>(null);
-  const cardWrapperRef = useRef<HTMLDivElement>(null);
 
-  const handleMouseEnter = () => {
-    if (cardWrapperRef.current) {
-      gsap.to(cardWrapperRef.current, { rotationY: 180, duration: 0.6, ease: "power2.inOut" });
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (cardWrapperRef.current) {
-      gsap.to(cardWrapperRef.current, { rotationY: 0, duration: 0.6, ease: "power2.inOut" });
-    }
-  };
+  const handleMouseEnter = () => setIsFlipped(true);
+  const handleMouseLeave = () => setIsFlipped(false);
 
   useEffect(() => {
     setName(sessionStorage.getItem("hhgoa_builder_name") || "ALEX.WAV");
@@ -106,111 +99,25 @@ export default function Result() {
           {/* Left Column: ID Card */}
           <div className="w-full flex flex-col items-center lg:items-end justify-center">
             
-            {/* GSAP Perspective Wrapper */}
+            {/* Container for download export */}
             <div 
-              className="w-full max-w-[420px] h-[720px] relative" 
-              style={{ perspective: "1000px" }}
+              className="w-full max-w-[420px] h-[720px] relative cursor-pointer" 
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
+              ref={cardRef}
             >
-              {/* Inner animated container */}
-              <div ref={cardWrapperRef} className="w-full h-full relative" style={{ transformStyle: "preserve-3d" }}>
-                
-                {/* Front of Card */}
-                <div 
-                  ref={cardRef}
-                  className="w-full h-full absolute inset-0 bg-[#F7F3E3] rounded-[32px] flex flex-col shadow-[0_0_50px_rgba(255,105,180,0.3)] border-4 border-hot-pink"
-                  style={{ backfaceVisibility: "hidden" }}
-                >
-                  {/* Card Content Top */}
-                  <div className="p-8 flex-grow flex flex-col items-center relative z-10 text-deep-forest text-center bg-transparent">
-                
-                {/* Faint Header */}
-                <div className="absolute top-4 left-6 flex items-center gap-2 opacity-30">
-                  <span className="font-label-caps text-[8px] text-deep-forest">HH GOA 2026 | Personalization | A. Singh</span>
-                </div>
-
-                {/* Hacker House Pink */}
-                <div className="mt-4 px-4 py-1 bg-white/60 backdrop-blur-sm rounded-full">
-                  <span className="font-label-caps text-hot-pink font-bold tracking-widest text-sm">HACKER HOUSE</span>
-                </div>
-                
-                {/* Big GOA Text */}
-                <div className="relative mt-2 flex items-center justify-center w-full h-24">
-                  <span className="material-symbols-outlined text-deep-forest text-3xl absolute left-6 opacity-80" style={{ fontVariationSettings: "'FILL' 1" }}>local_florist</span>
-                  <img src="/assets/goa_hindi.svg" alt="GOA" className="h-24 object-contain relative z-10" crossOrigin="anonymous" />
-                  <span className="material-symbols-outlined text-deep-forest text-3xl absolute right-6 opacity-80" style={{ fontVariationSettings: "'FILL' 1" }}>local_florist</span>
-                  <span className="font-display-lg text-5xl text-hot-pink absolute z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-12 opacity-90 drop-shadow-md pointer-events-none">2026</span>
-                </div>
-
-                {/* Subtext */}
-                <span className="font-label-caps text-[10px] tracking-widest mt-2 opacity-80 text-deep-forest">28 - 31 OCT 2026 • GOA, INDIA</span>
-                
-                {/* Profile Photo Area */}
-                <div className="relative mt-8 mb-6">
-                  <div className="w-40 h-40 rounded-full border-[3px] border-dashed border-hot-pink p-2 bg-white/50 backdrop-blur-sm">
-                    <div className="w-full h-full rounded-full bg-deep-forest overflow-hidden flex items-center justify-center">
-                      {imageSrc ? (
-                         // eslint-disable-next-line @next/next/no-img-element
-                         <img src={imageSrc} alt="Builder" className="w-full h-full object-cover grayscale contrast-125" crossOrigin="anonymous" />
-                      ) : (
-                        <span className="material-symbols-outlined text-white/50 text-[80px]">person</span>
-                      )}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Name & Role */}
-                <h3 className="font-display-lg text-4xl text-deep-forest uppercase tracking-tight truncate w-full px-4 m-0 leading-none">{name || 'ALEX.WAV'}</h3>
-                <span className="font-label-caps text-hot-pink font-bold tracking-widest text-sm mt-2 uppercase">{role}</span>
-
-                {/* Motto */}
-                <span className="font-label-caps text-[10px] font-bold tracking-[0.3em] mt-auto opacity-70 text-deep-forest">BUILD • SHIP • LAUNCH</span>
-              </div>
-
-              {/* Background Texture inside card using standard img tag for html-to-image compatibility */}
-              <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
-                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                 <img src="/assets/Sun_rise.png" alt="texture" className="w-full h-full object-cover" crossOrigin="anonymous" style={{ mixBlendMode: 'multiply' }} />
-              </div>
-
-              {/* Card Footer (Dark Green) */}
-              <div className="bg-[#0f1f1a] w-full p-6 relative z-10 rounded-b-[28px] border-t border-deep-forest/20">
-                <div className="grid grid-cols-3 text-center divide-x divide-white/10">
-                  <div className="flex flex-col items-center gap-2">
-                    <span className="material-symbols-outlined text-hot-pink text-xl">calendar_today</span>
-                    <span className="font-label-caps text-white/50 text-[10px] uppercase">DATES</span>
-                    <span className="font-label-caps text-white text-xs uppercase">28-31 OCT</span>
-                  </div>
-                  <div className="flex flex-col items-center gap-2">
-                    <span className="material-symbols-outlined text-hot-pink text-xl">location_on</span>
-                    <span className="font-label-caps text-white/50 text-[10px] uppercase">LOC</span>
-                    <span className="font-label-caps text-white text-xs uppercase">GOA, IN</span>
-                  </div>
-                  <div className="flex flex-col items-center gap-2 max-w-[33%] px-1">
-                    <span className="material-symbols-outlined text-hot-pink text-xl">group</span>
-                    <span className="font-label-caps text-white/50 text-[10px] uppercase">TEAM</span>
-                    <span className="font-label-caps text-white text-xs uppercase truncate w-full">{team || 'TBD'}</span>
-                  </div>
-                </div>
-              </div>
+               <IDCard 
+                 name={name}
+                 role={role}
+                 team={team}
+                 photo={imageSrc}
+                 builderId="HHGOA2026-0001"
+                 flipped={isFlipped}
+               />
             </div>
-            
-            {/* Back of Card */}
-                <div 
-                  className="w-full h-full absolute inset-0 bg-deep-forest rounded-[32px] flex flex-col items-center justify-center shadow-[0_0_50px_rgba(255,105,180,0.3)] border-4 border-golden-yellow"
-                  style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
-                >
-                  <img src="/assets/Hacker_house.png" alt="Hacker House" className="h-10 mb-6" />
-                  <img src="/assets/goa_hindi.svg" alt="GOA" className="h-32 opacity-50" />
-                  <span className="font-label-caps text-golden-yellow tracking-widest mt-12 opacity-80 text-sm">BUILD • SHIP • LAUNCH</span>
-                </div>
-
-              </div>
             <p className="font-label-caps text-white/50 text-xs tracking-widest mt-6 flex items-center gap-2">
               <span className="material-symbols-outlined text-sm">3d_rotation</span> HOVER TO FLIP
             </p>
-            </div>
           </div>
 
           {/* Right Column: Actions */}
@@ -224,21 +131,23 @@ export default function Result() {
               </div>
 
               <div className="flex flex-col gap-5">
-                <button 
+                <RetroButton 
                   onClick={handleDownload}
-                  className="w-full bg-hot-pink text-deep-forest py-4 px-6 font-label-caps font-bold tracking-widest flex items-center justify-between uppercase transition-all border border-hot-pink rounded-full hover:-translate-y-[1px] hover:shadow-lg"
+                  className="w-full"
                 >
-                  DOWNLOAD PNG
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs opacity-70">2.4MB</span>
-                    <span className="material-symbols-outlined">download</span>
+                  <div className="flex items-center gap-2 text-[20px] sm:text-[24px]">
+                    <span>DOWNLOAD PNG</span>
+                    <span className="text-[12px] sm:text-[14px] opacity-70 mt-1">2.4MB</span>
+                    <span className="material-symbols-outlined text-[24px]">download</span>
                   </div>
-                </button>
+                </RetroButton>
 
-                <button className="w-full bg-golden-yellow text-deep-forest py-4 px-6 font-label-caps font-bold tracking-widest flex items-center justify-between uppercase transition-all border border-golden-yellow rounded-full hover:-translate-y-[1px] hover:shadow-lg">
-                  ADD TO APPLE WALLET
-                  <span className="material-symbols-outlined">account_balance_wallet</span>
-                </button>
+                <RetroButton className="w-full">
+                  <div className="flex items-center gap-2 text-[18px] sm:text-[22px]">
+                    <span>ADD TO APPLE WALLET</span>
+                    <span className="material-symbols-outlined text-[24px]">account_balance_wallet</span>
+                  </div>
+                </RetroButton>
               </div>
             </div>
 

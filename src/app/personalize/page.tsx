@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { RetroButton } from "@/components/RetroButton";
+import { IDCard } from "@/components/IDCard";
 
 export default function Personalize() {
   const router = useRouter();
@@ -145,14 +147,12 @@ export default function Personalize() {
             
             {/* Submit Button */}
             <div className="mt-8 pt-4">
-              <button 
-                type="button" 
+              <RetroButton 
                 onClick={handleFinalize}
-                className="w-full relative z-10 bg-hot-pink text-deep-forest py-5 font-label-caps font-bold tracking-widest uppercase flex justify-center items-center gap-2 border border-hot-pink rounded-full hover:-translate-y-[1px] transition-all"
+                className="w-full"
               >
                 FINALIZE CREDENTIALS
-                <span className="material-symbols-outlined text-lg">arrow_forward</span>
-              </button>
+              </RetroButton>
             </div>
           </form>
         </div>
@@ -160,94 +160,13 @@ export default function Personalize() {
         {/* Right Column: Live Preview Card */}
         <div className="w-full flex justify-center items-center lg:pl-10">
           
-          <div className="w-full max-w-[420px] h-[720px] bg-[#F7F3E3] rounded-[32px] flex flex-col relative shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-            
-            {/* Card Content Top */}
-            <div className="p-8 flex-grow flex flex-col items-center relative z-10 text-deep-forest text-center">
-              
-              {/* Faint Header */}
-              <div className="absolute top-4 left-6 flex items-center gap-2 opacity-30">
-                <span className="font-label-caps text-[8px]">HH GOA 2026 | Personalization | A. Singh</span>
-              </div>
-
-              {/* Hacker House Pink */}
-              <div className="mt-4 px-4 py-1 bg-white/60 backdrop-blur-sm rounded-full">
-                <span className="font-label-caps text-hot-pink font-bold tracking-widest text-sm">HACKER HOUSE</span>
-              </div>
-              
-              {/* Big GOA Text */}
-              <div className="relative mt-2 flex items-center justify-center w-full h-24">
-                <span className="material-symbols-outlined text-deep-forest text-3xl absolute left-6">local_florist</span>
-                <img src="/assets/goa_hindi.svg" alt="GOA" className="h-24 object-contain relative z-10" />
-                <span className="material-symbols-outlined text-deep-forest text-3xl absolute right-6">local_florist</span>
-                <span className="font-display-lg text-5xl text-hot-pink absolute z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-12 opacity-90 drop-shadow-sm pointer-events-none">2026</span>
-              </div>
-
-              {/* Subtext */}
-              <span className="font-label-caps text-[10px] tracking-widest mt-2 opacity-80">28 - 31 OCT 2026 • GOA, INDIA</span>
-              
-              {/* Profile Photo Area */}
-              <div className="relative mt-8 mb-6">
-                <div className="w-40 h-40 rounded-full border-[3px] border-dashed border-hot-pink p-2">
-                  <div className="w-full h-full rounded-full bg-deep-forest overflow-hidden flex items-center justify-center">
-                    {imageSrc ? (
-                       // eslint-disable-next-line @next/next/no-img-element
-                       <img src={imageSrc} alt="Builder" className="w-full h-full object-cover grayscale" />
-                    ) : (
-                      <span className="material-symbols-outlined text-white/50 text-[80px]">person</span>
-                    )}
-                  </div>
-                </div>
-              </div>
-
-              {/* Name & Role */}
-              <h3 className="font-display-lg text-4xl text-deep-forest uppercase tracking-tight truncate w-full px-4">{name || 'ANO_NYMOUS'}</h3>
-              <span className="font-label-caps text-hot-pink font-bold tracking-widest text-sm mt-1 uppercase">{role}</span>
-
-              {/* Motto */}
-              <span className="font-label-caps text-[10px] font-bold tracking-[0.3em] mt-auto opacity-70">BUILD • SHIP • LAUNCH</span>
-            </div>
-
-              {/* Background Texture / Palm tree overlay inside card */}
-            <div className="absolute inset-0 z-0 opacity-10 pointer-events-none rounded-[32px] overflow-hidden">
-              <Image 
-                src="/assets/Sun_rise.png" 
-                alt="Card Background" 
-                fill 
-                className="object-cover mix-blend-multiply" 
-              />
-            </div>
-            <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
-              <Image 
-                src="/assets/Sun_rise.png" 
-                alt="Card Background" 
-                fill 
-                className="object-cover mix-blend-multiply" 
-              />
-            </div>
-
-            {/* Card Footer (Dark Green) */}
-            <div className="bg-[#0f1f1a] w-full p-6 relative z-10 rounded-b-[32px] border-t border-deep-forest/20">
-              <div className="grid grid-cols-3 text-center divide-x divide-white/10">
-                <div className="flex flex-col items-center gap-2">
-                  <span className="material-symbols-outlined text-hot-pink text-xl">calendar_today</span>
-                  <span className="font-label-caps text-white/50 text-[10px] uppercase">DATES</span>
-                  <span className="font-label-caps text-white text-xs uppercase">28-31 OCT</span>
-                </div>
-                <div className="flex flex-col items-center gap-2">
-                  <span className="material-symbols-outlined text-hot-pink text-xl">location_on</span>
-                  <span className="font-label-caps text-white/50 text-[10px] uppercase">LOC</span>
-                  <span className="font-label-caps text-white text-xs uppercase">GOA, IN</span>
-                </div>
-                <div className="flex flex-col items-center gap-2 max-w-[33%] px-1">
-                  <span className="material-symbols-outlined text-hot-pink text-xl">group</span>
-                  <span className="font-label-caps text-white/50 text-[10px] uppercase">TEAM</span>
-                  <span className="font-label-caps text-white text-xs uppercase truncate w-full">{team || 'TBD'}</span>
-                </div>
-              </div>
-            </div>
-            
-          </div>
+          <IDCard 
+            name={name} 
+            role={role} 
+            team={team} 
+            photo={imageSrc} 
+            builderId="HHGOA2026-0001" 
+          />
         </div>
 
       </div>

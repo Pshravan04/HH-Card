@@ -66,6 +66,7 @@
   --font-button: "Victor Mono", monospace;
   --font-step-number: "Victor Mono", monospace;
   --font-headline-lg-mobile: "Imbue", serif;
+  --font-script: "Caveat", cursive;
 }
 
 @layer base {
