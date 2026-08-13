@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import QRCode from "qrcode";
+import { TreePalm, User, Calendar, MapPin, Users, Star, Flower2, Hash } from "lucide-react";
 
 export interface IDCardProps {
   name: string;
@@ -11,6 +12,7 @@ export interface IDCardProps {
   photo: string | null;
   builderId: string;
   flipped?: boolean;
+  exportMode?: "none" | "front" | "back";
 }
 
 export function IDCard({
@@ -20,6 +22,7 @@ export function IDCard({
   photo,
   builderId,
   flipped = false,
+  exportMode = "none",
 }: IDCardProps) {
   const [qrCodeUrl, setQrCodeUrl] = useState<string>("");
 
@@ -54,22 +57,23 @@ export function IDCard({
     <div
       className="relative w-full max-w-[420px] h-[720px] mx-auto perspective-1000 group transition-all duration-700 shadow-[0_20px_50px_rgba(0,0,0,0.5)] rounded-[24px]"
       style={{
-        perspective: "1000px",
+        perspective: exportMode === "none" ? "1000px" : "none",
       }}
     >
       <div
-        className={`w-full h-full relative preserve-3d transition-transform duration-700 rounded-[24px] ${
-          flipped ? "rotate-y-180" : ""
+        className={`w-full h-full relative transition-transform duration-700 rounded-[24px] ${
+          flipped && exportMode === "none" ? "rotate-y-180" : ""
         }`}
         style={{
-          transformStyle: "preserve-3d",
-          transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
+          transformStyle: exportMode === "none" ? "preserve-3d" : "flat",
+          transform: exportMode === "none" && flipped ? "rotateY(180deg)" : "rotateY(0deg)",
         }}
       >
         {/* FRONT FACE */}
+        {(exportMode === "none" || exportMode === "front") && (
         <div
-          className="absolute inset-0 w-full h-full backface-hidden rounded-[24px] flex flex-col overflow-hidden bg-[#F5F2E9]"
-          style={{ backfaceVisibility: "hidden" }}
+          className="absolute inset-0 w-full h-full rounded-[24px] flex flex-col overflow-hidden bg-[#F5F2E9]"
+          style={{ backfaceVisibility: exportMode === "none" ? "hidden" : "visible" }}
         >
           {/* Lanyard Hole */}
           <div className="absolute top-4 left-1/2 -translate-x-1/2 w-16 h-4 bg-deep-forest/20 rounded-full flex items-center justify-center z-50">
@@ -87,24 +91,12 @@ export function IDCard({
             />
           </div>
           
-          <div className="absolute top-20 right-8 z-0 opacity-20 transform -scale-x-100">
-            <Image
-              src="/assets/palm_tree.png"
-              alt="Palm"
-              width={100}
-              height={100}
-              className="object-contain"
-            />
+          <div className="absolute top-16 right-4 z-0 opacity-30 transform -scale-x-100">
+            <TreePalm size={100} color="#14452F" strokeWidth={1.5} />
           </div>
 
-          <div className="absolute top-24 left-4 z-0 opacity-20">
-            <Image
-              src="/assets/palm_tree.png"
-              alt="Palm"
-              width={60}
-              height={60}
-              className="object-contain"
-            />
+          <div className="absolute top-16 left-4 z-0 opacity-30">
+            <TreePalm size={100} color="#14452F" strokeWidth={1.5} />
           </div>
 
           {/* Content Top */}
@@ -115,17 +107,11 @@ export function IDCard({
 
             {/* Big GOA Text */}
             <div className="relative flex items-center justify-center w-full mt-1 mb-2">
-              <span className="material-symbols-outlined text-[#14452F] text-4xl absolute left-4">
-                local_florist
-              </span>
               <span className="font-headline-lg text-[#14452F] text-[90px] leading-none tracking-tighter">
                 GOA
               </span>
               <span className="font-script text-6xl text-hot-pink absolute z-20 top-[60%] left-[65%] -translate-x-1/2 -translate-y-1/2 -rotate-6 drop-shadow-sm pointer-events-none">
                 2026
-              </span>
-              <span className="material-symbols-outlined text-[#14452F] text-4xl absolute right-4">
-                local_florist
               </span>
             </div>
 
@@ -153,9 +139,7 @@ export function IDCard({
                       crossOrigin="anonymous"
                     />
                   ) : (
-                    <span className="material-symbols-outlined text-white/50 text-[80px]">
-                      person
-                    </span>
+                    <User className="text-white/50 w-20 h-20" />
                   )}
                   {/* Faint overlay on photo to match design vibe */}
                   <div className="absolute inset-0 bg-[#14452F]/10 mix-blend-color"></div>
@@ -202,9 +186,7 @@ export function IDCard({
             <div className="relative z-30 h-full flex flex-col justify-end pb-4">
               <div className="grid grid-cols-3 text-center mb-4">
                 <div className="flex flex-col items-center gap-1 border-r border-white/10">
-                  <span className="material-symbols-outlined text-hot-pink text-[22px]">
-                    calendar_today
-                  </span>
+                  <Calendar className="text-hot-pink w-6 h-6" />
                   <span className="font-label-caps text-white/50 text-[9px] uppercase tracking-wider mt-1">
                     DATES
                   </span>
@@ -213,9 +195,7 @@ export function IDCard({
                   </span>
                 </div>
                 <div className="flex flex-col items-center gap-1 border-r border-white/10">
-                  <span className="material-symbols-outlined text-hot-pink text-[22px]">
-                    location_on
-                  </span>
+                  <MapPin className="text-hot-pink w-6 h-6" />
                   <span className="font-label-caps text-white/50 text-[9px] uppercase tracking-wider mt-1">
                     LOCATION
                   </span>
@@ -224,9 +204,7 @@ export function IDCard({
                   </span>
                 </div>
                 <div className="flex flex-col items-center gap-1 max-w-[93%] mx-auto w-full px-1">
-                  <span className="material-symbols-outlined text-hot-pink text-[22px]">
-                    group
-                  </span>
+                  <Users className="text-hot-pink w-6 h-6" />
                   <span className="font-label-caps text-white/50 text-[9px] uppercase tracking-wider mt-1">
                     TEAM
                   </span>
@@ -239,9 +217,7 @@ export function IDCard({
               {/* ID Badge Pill */}
               <div className="mx-auto bg-[#F5F2E9] rounded-lg px-4 py-2 flex items-center justify-center gap-2 border-2 border-deep-forest/10 shadow-lg">
                 <div className="w-5 h-5 rounded-full border border-deep-forest flex items-center justify-center">
-                  <span className="material-symbols-outlined text-deep-forest text-[14px]">
-                    star
-                  </span>
+                  <Star className="text-deep-forest w-3 h-3" />
                 </div>
                 <span className="font-label-caps text-deep-forest text-xs font-bold tracking-widest uppercase">
                   ID: {builderId || "HHGOA2026-0001"}
@@ -250,13 +226,15 @@ export function IDCard({
             </div>
           </div>
         </div>
+        )}
 
         {/* BACK FACE */}
+        {(exportMode === "none" || exportMode === "back") && (
         <div
           className="absolute inset-0 w-full h-full rounded-[24px] bg-[#0E3623] flex flex-col items-center justify-between py-12 px-8 overflow-hidden text-white"
           style={{
-            backfaceVisibility: "hidden",
-            transform: "rotateY(180deg)",
+            backfaceVisibility: exportMode === "none" ? "hidden" : "visible",
+            transform: exportMode === "none" ? "rotateY(180deg)" : "rotateY(0deg)",
           }}
         >
            {/* Lanyard Hole */}
@@ -265,9 +243,7 @@ export function IDCard({
           </div>
 
           <div className="w-full flex flex-col items-center z-10 relative mt-4">
-            <span className="material-symbols-outlined text-hot-pink text-3xl mb-4">
-              local_florist
-            </span>
+            <Flower2 className="text-hot-pink w-8 h-8 mb-4" />
             <div className="w-full border-t border-white/20 mb-4"></div>
             <h4 className="font-label-caps text-sm tracking-widest mb-6 uppercase">
               BUILT BY BUILDERS. FOR BUILDERS.
@@ -276,9 +252,9 @@ export function IDCard({
             {/* Details Box */}
             <div className="w-full border border-white/30 rounded-xl p-5 flex flex-col gap-4 bg-white/5 backdrop-blur-sm">
               <div className="flex items-center">
-                <span className="material-symbols-outlined text-hot-pink w-8">
-                  person
-                </span>
+                <div className="w-8 flex justify-start">
+                  <User className="text-hot-pink w-5 h-5" />
+                </div>
                 <span className="font-label-caps text-xs tracking-widest text-white/70 w-24 uppercase">
                   ROLE
                 </span>
@@ -288,9 +264,9 @@ export function IDCard({
               </div>
               <div className="w-full border-t border-white/10"></div>
               <div className="flex items-center">
-                <span className="material-symbols-outlined text-hot-pink w-8">
-                  calendar_today
-                </span>
+                <div className="w-8 flex justify-start">
+                  <Calendar className="text-hot-pink w-5 h-5" />
+                </div>
                 <span className="font-label-caps text-xs tracking-widest text-white/70 w-24 uppercase">
                   DATES
                 </span>
@@ -300,9 +276,9 @@ export function IDCard({
               </div>
               <div className="w-full border-t border-white/10"></div>
               <div className="flex items-center">
-                <span className="material-symbols-outlined text-hot-pink w-8">
-                  location_on
-                </span>
+                <div className="w-8 flex justify-start">
+                  <MapPin className="text-hot-pink w-5 h-5" />
+                </div>
                 <span className="font-label-caps text-xs tracking-widest text-white/70 w-24 uppercase">
                   LOCATION
                 </span>
@@ -312,9 +288,9 @@ export function IDCard({
               </div>
               <div className="w-full border-t border-white/10"></div>
               <div className="flex items-center">
-                <span className="material-symbols-outlined text-hot-pink w-8">
-                  tag
-                </span>
+                <div className="w-8 flex justify-start">
+                  <Hash className="text-hot-pink w-5 h-5" />
+                </div>
                 <span className="font-label-caps text-xs tracking-widest text-white/70 w-24 uppercase">
                   HASHTAG
                 </span>
@@ -326,9 +302,7 @@ export function IDCard({
               <div className="flex items-center">
                 <div className="w-8 flex items-center justify-start">
                   <div className="w-5 h-5 rounded-full border border-hot-pink flex items-center justify-center">
-                    <span className="material-symbols-outlined text-hot-pink text-[14px]">
-                      star
-                    </span>
+                    <Star className="text-hot-pink w-3 h-3" />
                   </div>
                 </div>
                 <span className="font-label-caps text-xs tracking-widest text-white/70 w-24 uppercase">
@@ -353,9 +327,7 @@ export function IDCard({
               
               {/* Overlay logo on QR */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-[#0E3623] rounded-md flex items-center justify-center border-2 border-white shadow-sm">
-                <span className="material-symbols-outlined text-white text-[20px]">
-                  local_florist
-                </span>
+                <Flower2 className="text-white w-5 h-5" />
               </div>
             </div>
             
@@ -398,6 +370,7 @@ export function IDCard({
              <div className="absolute inset-0 bg-gradient-to-t from-transparent to-[#0E3623]"></div>
           </div>
         </div>
+        )}
       </div>
     </div>
   );
